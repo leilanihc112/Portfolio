@@ -7,5 +7,5 @@ RUN dotnet publish -c Release -o /app/publish
 # Use ASP.NET runtime image to run the app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
-COPY --from-build /app/publish .
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "ResumeDataService.dll"]

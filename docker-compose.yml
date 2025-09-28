@@ -1,4 +1,18 @@
 services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    secrets:
+      - mongo_root_username
+      - mongo_root_password
+    environment:
+      MONGO_INITDB_ROOT_USERNAME_FILE: /run/secrets/mongo_root_username
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongo_root_password
+
   frontend:
     build: ./frontend
     ports: 
@@ -8,29 +22,62 @@ services:
     build: ./services/resume-data-dotnet/ResumeDataService
     ports:
       - "5000:80"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
 
   project-showcase:
     build: ./services/project-showcase-node
     ports:
       - "4000:3000"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
 
   analytics:
     build: ./services/analytics-python
     ports:
       - "8000:8000"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
 
   contact-form:
     build: ./services/contact-form-node
     ports:
       - "4001:3000"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
 
   social-links:
     build: ./services/social-links
     ports:
       - "4002:3000"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
 
   auth-service:
     build: ./services/auth-service-node
     ports:
       - "4003:3000"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+
+secrets:
+  mongo_root_username:
+    file: ./mongo_root_username.txt
+  mongo_root_password:
+    file: ./mongo_root_password.txt
+
+volumes:
+  mongo-data:
 

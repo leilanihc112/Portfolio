@@ -51,6 +51,11 @@ Before starting, create these gitignored files in the repo root:
 - `.env` - environment variables shared by the backend services
 - `mongo_root_username.txt` / `mongo_root_password.txt` - MongoDB root credentials (Docker secrets)
 
+On SELinux systems (Fedora/RHEL), containers can't read files in your home directory by default, so Mongo fails with `Permission denied` on its secrets. Relabel them once (and again if you recreate them):
+```bash
+chcon -t container_file_t mongo_root_username.txt mongo_root_password.txt
+```
+
 Clone the repository and use Docker Compose to run services locally:
 ```bash
 git clone https://github.com/leilanihc112/Portfolio.git

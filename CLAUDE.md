@@ -30,7 +30,7 @@ Compose needs these gitignored files in the repo root before it will start:
 | auth-service | `services/auth-service-node/` | 4003 → 3000 |
 | analytics | `services/analytics-python/` | 8000 → 8000 |
 | resume-data | `services/resume-data-dotnet/ResumeDataService/` | 5000 → 8080 |
-| mongodb | `mongo:latest` | 27017 → 27017 |
+| mongodb | `mongo:9.0` | 27017 → 27017 |
 
 ## Per-service development
 

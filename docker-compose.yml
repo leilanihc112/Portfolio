@@ -1,6 +1,7 @@
 services:
   mongodb:
-    image: mongo:latest
+    # Pinned to a major version - a jump to the next major can refuse to start on existing data
+    image: mongo:9.0
     container_name: mongodb
     ports:
       - "27017:27017"

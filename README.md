@@ -45,6 +45,10 @@ Projects can be sorted by:
 
 ## Local Development
 
+Before starting, create these gitignored files in the repo root:
+- `.env` - environment variables shared by the backend services
+- `mongo_root_username.txt` / `mongo_root_password.txt` - MongoDB root credentials (Docker secrets)
+
 Clone the repository and use Docker Compose to run services locally:
 ```bash
 git clone https://github.com/leilanihc112/Portfolio.git

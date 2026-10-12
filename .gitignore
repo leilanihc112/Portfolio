@@ -2,3 +2,14 @@
 mongo_root_username.txt
 mongo_root_password.txt
 
+
+# Dependencies and build output - each service installs/builds its own
+node_modules/
+venv/
+__pycache__/
+*.pyc
+bin/
+obj/
+
+# Editor swap files
+*.swp

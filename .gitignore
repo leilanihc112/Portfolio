@@ -13,3 +13,6 @@ obj/
 
 # Editor swap files
 *.swp
+
+# Helm secret values - passed to `helm install -f`, never committed
+helm/portfolio/values-secrets.yaml
